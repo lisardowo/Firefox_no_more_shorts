@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 
-var browser = browser || chrome;
+var browser = browser || chrome ; //uses chrome object (if in chrome) or renames the browser(firefox per example) to chrome so the code wont break
 
 (async () => {
     if (window.location.host.includes("youtube.com")) {
