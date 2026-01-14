@@ -21,9 +21,11 @@
  * SOFTWARE.
  */
 
+var browser = browser || chrome;
+
 (async () => {
     if (window.location.host.includes("youtube.com")) {
-        const { ShortsRemover } = await import(chrome.runtime.getURL('./ShortsRemover.js'));
+        const { ShortsRemover } = await import(browser.runtime.getURL('./ShortsRemover.js'));
 
         if (ShortsRemover.started) return;
 
