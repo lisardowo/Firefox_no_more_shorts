@@ -21,6 +21,8 @@
  * SOFTWARE.
  */
 
+//Before upload to the extension store, the corresponding manifest
+//should be draged to the app folder for the extension to work 
 
 (async () => {
     if (window.location.host.includes("youtube.com")) {
