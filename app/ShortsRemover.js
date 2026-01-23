@@ -21,8 +21,6 @@
  * SOFTWARE.
  */
 
-var browser = browser || chrome ;
-
 
 export class ShortsRemover {
   static instance = null;

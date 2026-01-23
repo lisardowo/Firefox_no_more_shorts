@@ -21,15 +21,17 @@
  * SOFTWARE.
  */
 
-var browser = browser || chrome ; //uses chrome object (if in chrome) or renames the browser(firefox per example) to chrome so the code wont break
 
 (async () => {
     if (window.location.host.includes("youtube.com")) {
-        const { ShortsRemover } = await import(browser.runtime.getURL('./ShortsRemover.js'));
+
+        const client = globalThis.browser ?? globalThis.chrome;
+        const { ShortsRemover } = await import(client.runtime.getURL('./ShortsRemover.js'));
 
         if (ShortsRemover.started) return;
 
         const app = ShortsRemover.getInstance(window);
         app.init();
+
     }
 })();
