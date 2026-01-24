@@ -1,0 +1,7 @@
+.vscode/
+.github/
+dist/
+build/
+coverage/
+*.min.js
+*.png

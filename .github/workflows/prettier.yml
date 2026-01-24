@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Check formatting
-        run: npx prettier --check "**/*.js"
+      - name: Check formatting on ALL files
+        run: npx prettier --check . --ignore-path .prettierignore
 
   prettier-auto-format-main:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
@@ -58,11 +58,13 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Format and commit
+      - name: Format ALL files and commit
         if: steps.check_last_commit.outputs.skip != 'true'
         run: |
-          npx prettier --write "**/*.js"
+          # Format all files respecting .prettierignore
+          npx prettier --write . --ignore-path .prettierignore
           
+          # Check if there were any changes
           if git diff --quiet; then
             echo "No formatting changes needed"
           else
