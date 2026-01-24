@@ -1,0 +1,22 @@
+name: Prettier Check
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Format JS files
+        run: npx prettier --write "**/*.js"
